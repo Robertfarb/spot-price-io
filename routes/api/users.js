@@ -6,8 +6,11 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const User = require('../../models/User');
 
-const valdateRegisterInput = require('../../validation/register');
+const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+
+//Test Route
+router.get('/', (req, res) => res.json({error: false, userRoute: "running"}))
 
 // @route POST api/users/register
 // @desc Register User
@@ -29,7 +32,7 @@ router.post('/register', (req, res) => {
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
         });
 
         bcrypt.genSalt(10, (err, salt) => {
