@@ -1,0 +1,20 @@
+{
+  "name": "spot-price-io",
+  "version": "1.0.0",
+  "description": "SpotPrice.io gold spot price ticker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robertfarb/spot-price-io.git"
+  },
+  "author": "Robert Farb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Robertfarb/spot-price-io/issues"
+  },
+  "homepage": "https://github.com/Robertfarb/spot-price-io#readme"
+}
