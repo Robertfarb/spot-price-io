@@ -17,8 +17,8 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/outages">
-            Outages
+          <Link className="nav-link" to="/live-feed">
+            Live Spot Prices
           </Link>
         </li>
         <li className="nav-item">
