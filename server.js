@@ -19,10 +19,6 @@ mongoose.connect(db, { useNewUrlParser: true })
   .then(console.log("mongoDB connected"))
   .catch(err => console.log(err));
 
-app.get('/', (req, res) => {
-  res.send('Hello, this is the root of SpotPrice.io Application');
-});
-
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
