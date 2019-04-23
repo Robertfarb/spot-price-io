@@ -49,7 +49,7 @@ class Register extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/outages');
     }
-  }
+  }t
 
   render() {
     const { errors } = this.state;
