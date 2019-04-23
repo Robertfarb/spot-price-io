@@ -5,7 +5,7 @@ import store from './store/store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './util/set_auth_token';
 import { setCurrentUser, logoutUser } from './actions/auth_actions';
-import { ProtectedRoute } from './util/route_util';
+import { ProtectedRoute, AuthRoute } from './util/route_util';
 
 import NavBar from "./components/universal/Navbar";
 import Footer from "./components/universal/Footer";
@@ -38,9 +38,9 @@ class App extends Component {
             <NavBar />
             <Route exact path="/" component={Landing} />
             <div className="container main-content">
-              <ProtectedRoute exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/live-feed" component={LiveFeed} />
+              <Route exact path="/register" component={Register} />
+              <AuthRoute exact path="/login" component={Login} />
+              <ProtectedRoute exact path="/live-feed" component={LiveFeed} />
             </div>
             <Footer />
           </div>
