@@ -45,3 +45,8 @@ img {
 .main-content {
   min-height: 77vh;
 }
+
+.login-jumbo {
+  max-width: 70%;
+  margin: 0 auto;
+}
