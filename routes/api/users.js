@@ -59,8 +59,9 @@ router.post('/login', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email, password, role } = req.body;
+
+
   User.findOne({ email })
     .then(user => {
       if (!user) {
@@ -70,7 +71,7 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            const payload = { id: user.id, name: user.name, avatar: user.avatar }
+            const payload = { id: user.id, name: user.name, avatar: user.avatar, role: user.role}
             jwt.sign(
               payload,
               keys.secretOrKey,

@@ -12,6 +12,7 @@ class Register extends Component {
     this.state = {
       name: '',
       email: '',
+      role: '',
       password: '',
       password2: '',
       errors: {}
@@ -38,6 +39,7 @@ class Register extends Component {
     const newUser = {
       name: this.state.name,
       email: this.state.email,
+      role: this.state.role,
       password: this.state.password,
       password2: this.state.password2,
     }
@@ -113,6 +115,19 @@ class Register extends Component {
                     onChange={this.update('password2')}
                   />
                   {errors.password2 && (<div className="invalid-feedback">{errors.password2}</div>)}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.name
+                    })}
+                    placeholder="User Role"
+                    name="role"
+                    value={this.state.role}
+                    onChange={this.update('role')}
+                  />
+                  {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                 </div>
                 <input
                   type="submit"
