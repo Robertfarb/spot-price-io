@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/auth_actions';
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   onLogoutClick(e) {
     e.preventDefault();
@@ -13,6 +16,7 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
+    console.log(this.props.auth.user.role === "Admin");
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
@@ -29,15 +33,28 @@ class Navbar extends Component {
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-        {/* <li className="nav-item">
-          <Link className="nav-link" to="/register">
-            Sign up
-          </Link>
-        </li> */}
         <li className="nav-item">
           <Link className="nav-link" to="/login">
             Login
           </Link>
+        </li>
+      </ul>
+    );
+
+    const adminLinks = (
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <Link className="nav-link" to="/register">
+            Sign up
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/live-feed">
+            Live Spot Prices
+          </Link>
+        </li>
+        <li className="nav-item">
+          <button id="logout-button" onClick={this.onLogoutClick.bind(this)} className="nav-link">Logout</button>
         </li>
       </ul>
     );
@@ -52,12 +69,11 @@ class Navbar extends Component {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
               <span className="navbar-toggler-icon"></span>
             </button>
-
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
-
               </ul>
-              {isAuthenticated ? authLinks : guestLinks}
+              {/* TODO: Correct logic for authLinks vs. adminLinks rendering */}
+              {isAuthenticated ? authLinks : adminLinks}
             </div>
           </div>
         </nav>
