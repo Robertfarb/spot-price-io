@@ -15,10 +15,10 @@ class Navbar extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
-    console.log(this.props.auth.user.role === "Admin");
+    const { isAuthenticated, user } = this.props.auth;
+    console.log(user.role === "Admin");
 
-    const authLinks = (
+    const userLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/live-feed">
@@ -31,7 +31,7 @@ class Navbar extends Component {
       </ul>
     );
 
-    const guestLinks = (
+    const unauthorizedLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/login">
@@ -73,7 +73,8 @@ class Navbar extends Component {
               <ul className="navbar-nav mr-auto">
               </ul>
               {/* TODO: Correct logic for authLinks vs. adminLinks rendering */}
-              {isAuthenticated ? authLinks : adminLinks}
+              {(isAuthenticated && user.role.toLowerCase() === "admin") ? adminLinks : 
+                ((isAuthenticated && user.role.toLowerCase() === "user") ? userLinks : unauthorizedLinks)}
             </div>
           </div>
         </nav>

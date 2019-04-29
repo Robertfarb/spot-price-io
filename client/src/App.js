@@ -38,8 +38,8 @@ class App extends Component {
             <NavBar />
             <div className="main-content">
               <AuthRoute exact path="/" component={Login} />
-              <AuthRoute exact path="/register" component={Register} />
               <AuthRoute exact path="/login" component={Login} />
+              <ProtectedRoute exact path="/register" component={Register} />
               <ProtectedRoute exact path="/live-feed" component={LiveFeed} />
             </div>
             <Footer />

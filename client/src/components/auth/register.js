@@ -12,7 +12,7 @@ class Register extends Component {
     this.state = {
       name: '',
       email: '',
-      role: '',
+      role: 'user',
       password: '',
       password2: '',
       errors: {}
@@ -46,12 +46,6 @@ class Register extends Component {
 
     this.props.registerUser(newUser, this.props.history);
   }
-
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/outages');
-    }
-  }t
 
   render() {
     const { errors } = this.state;
@@ -117,17 +111,11 @@ class Register extends Component {
                   {errors.password2 && (<div className="invalid-feedback">{errors.password2}</div>)}
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.name
-                    })}
-                    placeholder="User Role"
-                    name="role"
-                    value={this.state.role}
-                    onChange={this.update('role')}
-                  />
-                  {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
+                  <label for="userRoleSelect" classname="w-100">Authorization Level</label>
+                  <select id="userRoleSelect" className="form-control" onChange={this.update('role')} name="role">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                  </select>
                 </div>
                 <input
                   type="submit"
