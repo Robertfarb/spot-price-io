@@ -16,7 +16,6 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-    console.log(user.role === "Admin");
 
     const userLinks = (
       <ul className="navbar-nav ml-auto">
@@ -72,7 +71,6 @@ class Navbar extends Component {
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
               </ul>
-              {/* TODO: Correct logic for authLinks vs. adminLinks rendering */}
               {(isAuthenticated && user.role.toLowerCase() === "admin") ? adminLinks : 
                 ((isAuthenticated && user.role.toLowerCase() === "user") ? userLinks : unauthorizedLinks)}
             </div>

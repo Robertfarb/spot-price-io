@@ -30,6 +30,10 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Provider store={store}>
@@ -39,8 +43,8 @@ class App extends Component {
             <div className="main-content">
               <AuthRoute exact path="/" component={Login} />
               <AuthRoute exact path="/login" component={Login} />
-              <ProtectedRoute exact path="/register" component={Register} />
-              <ProtectedRoute exact path="/live-feed" component={LiveFeed} />
+              <ProtectedRoute exact path="/register" component={Register}/>
+              <ProtectedRoute exact path="/live-feed" component={LiveFeed}/>
             </div>
             <Footer />
           </div>
