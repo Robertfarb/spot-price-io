@@ -22,19 +22,23 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
   )} />
 );
 
-const AdminRoute = ({ component: Component, path, loggedIn, user, exact }) => (
-  <Route path={path} exact={exact} render={(props) => (
-    loggedIn ? (
-      <Component {...props} />
-    ) : (
-        <Redirect to="/" />
-      )
-  )} />
-);
+const Admin = ({ component: Component, path, loggedIn, user, exact }) => {
+  return (
+    <Route
+      path={path}
+      exact={exact}
+      render={props =>
+        (user.role === "Admin") ? <Component {...props} /> : <Redirect to="/" />
+      }
+    />
+  );
+  };
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.isAuthenticated
+  loggedIn: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
-export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected))
+export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+export const AdminRoute = withRouter(connect(mapStateToProps)(Admin));
