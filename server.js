@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const users = require('./routes/api/users');
+const livePrices = require('./routes/api/live-prices');
 const cors = require('cors');
 const port = process.env.PORT || 8000;
 const path = require('path');
@@ -24,6 +25,7 @@ require('./config/passport')(passport);
 
 // Routes
 app.use('/api/users', users);
+app.use('/api/live-prices', livePrices)
 
 //Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

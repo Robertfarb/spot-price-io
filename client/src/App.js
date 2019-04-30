@@ -45,6 +45,8 @@ class App extends Component {
               <AuthRoute exact path="/login" component={Login} />
               <AdminRoute exact path="/register" component={Register}/>
               <ProtectedRoute exact path="/live-feed" component={LiveFeed}/>
+              {/* Create 404 Page
+              <AuthRoute exact path="/*" component={<div>404 error.</div>}/> */}
             </div>
             <Footer />
           </div>
