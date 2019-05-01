@@ -12,7 +12,7 @@ import Footer from "./components/universal/Footer";
 import Landing from "./components/universal/Landing";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
-import LiveFeed from "./components/liveFeed";
+import LiveFeed from "./containers/LiveFeed";
 import './App.css';
 
 if (localStorage.jwtToken) {
@@ -46,7 +46,7 @@ class App extends Component {
               <AdminRoute exact path="/register" component={Register}/>
               <ProtectedRoute exact path="/live-feed" component={LiveFeed}/>
               {/* Create 404 Page
-              <AuthRoute exact path="/*" component={<div>404 error.</div>}/> */}
+                <AuthRoute exact path="/*" component={<div>404 error.</div>}/> */}
             </div>
             <Footer />
           </div>

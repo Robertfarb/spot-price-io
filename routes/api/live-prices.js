@@ -16,7 +16,7 @@ router.get('/all', (req, res) => {
   };
   rp(options)
     .then(response => {
-      res.json(response);
+      res.json({data: response});
       return true;
     })
     .catch(function(err) {
