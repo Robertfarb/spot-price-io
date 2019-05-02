@@ -28,7 +28,7 @@ const Admin = ({ component: Component, path, loggedIn, user, exact }) => {
       path={path}
       exact={exact}
       render={props =>
-        (user.role === "Admin") ? <Component {...props} /> : <Redirect to="/" />
+        (user.role.toLowerCase() === "admin") ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );
