@@ -12,10 +12,6 @@ img {
   margin-bottom: -50px;
 }
 
-.landing-inner {
-  padding-top: 80px;
-}
-
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
@@ -48,5 +44,9 @@ img {
 
 .login-jumbo {
   max-width: 70%;
+  margin: 0 auto;
+}
+
+.ag-theme-balham {
   margin: 0 auto;
 }
