@@ -23,6 +23,7 @@ class LiveFeed extends Component {
         <div className="dark-overlay landing-inner text-light">
           <div className="row">
             <div className="col-md-12 text-center table-parent">
+              {/* <ReactTabulator columns={columns} data={data} /> */}
               <TestTable />
             </div>
           </div>
