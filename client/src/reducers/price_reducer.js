@@ -1,4 +1,3 @@
-import isEmpty from "../validation/is-empty";
 import { SET_LIVE_PRICES } from "../actions/types";
 
 const initialState = {

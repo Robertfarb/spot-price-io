@@ -2,6 +2,10 @@ img {
   width: 100%;
 }
 
+body {
+  background: rgba(0, 0, 0, 0.7);
+}
+
 .landing {
   position: relative;
   background: #E0E0E0;
@@ -49,4 +53,14 @@ img {
 
 .ag-theme-balham {
   margin: 0 auto;
+}
+
+.loading-wrapper {
+  background: rgba(0, 0, 0, 0);
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  padding-top: 0;
 }

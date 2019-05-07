@@ -1,40 +1,58 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TestTable from "../components/universal/TestTable";
+import MatUiTable from "../components/universal/MatUiTable";
 import { getLivePrices } from "../actions/price_actions";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import LoadingSpinner from './../components/universal/LoadingSpinner';
+import "./../../src/App.css";
+
+const styles = theme => ({
+  progress: {
+    margin: theme.spacing.unit * 2
+  }
+});
 
 class LiveFeed extends Component {
   constructor(props) {
     super(props);
-    this.state={
-
+    this.state = {
+      loading: true
     }
   }
 
   componentWillMount() {
-    this.props.getLivePrices();
+    this.props.getLivePrices()
+    .then(result => this.setState({loading: false}));
   }
-  
+
   render() {
-    return (
-      <div className="landing">
-        <div className="dark-overlay landing-inner text-light">
-          <div className="row">
-            <div className="col-md-12 text-center table-parent">
-              {/* <ReactTabulator columns={columns} data={data} /> */}
-              <TestTable />
+    const { loading } = this.state;
+    const { livePrices } = this.props;
+
+    if (loading || !livePrices) {
+      return (
+        <LoadingSpinner />
+      )
+    } else {
+      const { livePrices } = this.props
+      console.log("THEM_LIVE_PRCES", livePrices);
+
+      return (
+        <div className="landing">
+          <div className="dark-overlay landing-inner text-light">
+            <div className="row">
+              <div className="col-md-12 text-center table-parent">
+                <MatUiTable livePrices={this.state.livePrices} {...this.props} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 const mapStateToProps = (state) => ({
-  livePrices: state.livePrices,
+  livePrices: state.prices,
   errors: state.errors
 })
 

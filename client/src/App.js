@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import jwt_decode from 'jwt-decode';
@@ -9,7 +9,6 @@ import { ProtectedRoute, AuthRoute, AdminRoute } from './util/route_util';
 
 import NavBar from "./components/universal/Navbar";
 import Footer from "./components/universal/Footer";
-import Landing from "./components/universal/Landing";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import LiveFeed from "./containers/LiveFeed";
