@@ -1,17 +1,9 @@
 import React, { Component } from "react";
 import MUIDataTable from "mui-datatables";
-// import Table from '@material-ui/core/Table';
-// import TableBody from '@material-ui/core/TableBody';
-// import TableCell from '@material-ui/core/TableCell';
-// import TableHead from '@material-ui/core/TableHead';
-// import TableRow from '@material-ui/core/TableRow';
-// import TablePagination from "@material-ui/core/TablePagination";
-// import TableSortLabel from "@material-ui/core/TableSortLabel";
-// import Paper from '@material-ui/core/Paper';
-
 
 const columns = ["Product Description", "Retail Bid", "5%", "7.5%", "10%"];
 const options = { filterType: "dropdown", responsive: "scroll" };
+const apiKeys = ["Name", "Bid"]
 
 const data = [
   ["Gabby George", "Business Analyst", "Minneapolis", 30, "$100,000"],
@@ -79,7 +71,14 @@ const data = [
 class DataTable extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      tableData: [],
+    };
+    this.cleanData = this.cleanData.bind(this);
+  }
+
+  componentDidMount() {
+    this.cleanData();
   }
 
   render() {
@@ -87,12 +86,32 @@ class DataTable extends Component {
     return (
       <div>
         <MUIDataTable
-          data={data}
+          data={this.state.tableData}
           columns={columns}
           options={options}
         />
       </div>
     );
+  }
+
+  cleanData() {
+    const spotPrices = this.props.livePrices.data;
+    let tableData = [];
+
+    spotPrices.forEach(spotPrice => {
+      console.log(spotPrice);
+      let coinDataArr = [];
+
+      apiKeys.forEach(key => {
+        if (spotPrice[key]) {
+          coinDataArr.push(spotPrice[key]);
+        }
+      });
+
+      tableData.push(coinDataArr);
+      this.setState({ tableData });
+      console.log("DATA_ARR", tableData);
+    });
   }
 }
 
