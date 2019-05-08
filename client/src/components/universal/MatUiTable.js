@@ -78,7 +78,7 @@ class DataTable extends Component {
   }
 
   componentDidMount() {
-    this.cleanData();
+    this.cleanData()
   }
 
   render() {
@@ -110,7 +110,6 @@ class DataTable extends Component {
 
       tableData.push(coinDataArr);
       this.setState({ tableData });
-      console.log("DATA_ARR", tableData);
     });
   }
 }

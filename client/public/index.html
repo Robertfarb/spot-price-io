@@ -14,17 +14,13 @@
     <div id='339b8849-3bfe-48ac-828b-9483026c8dfa' style='min-height:45px;'></div>
     <div id="root"></div>
     <script>
-      (function () {
-        // delete window.document.referrer;
-        // window.document.__defineGetter__('referrer', function () {
-        //   return "www.rggpricing.com";
-        // });
-        console.log(window.document.referrer);
-        var t = document.getElementsByTagName('script')[0];
-        var s = document.createElement('script'); s.async = true;
-        s.src = 'https://widget.nfusionsolutions.com/widget/script/ticker/1/f6bbba8d-f481-4700-9d2e-bb874a1a81bb/339b8849-3bfe-48ac-828b-9483026c8dfa';
-        t.parentNode.insertBefore(s, t);
-      })();
+      window.setInterval((function () {
+          console.log(window.document.referrer);
+          var t = document.getElementsByTagName('script')[0];
+          var s = document.createElement('script'); s.async = true;
+          s.src = 'https://widget.nfusionsolutions.com/widget/script/ticker/1/f6bbba8d-f481-4700-9d2e-bb874a1a81bb/339b8849-3bfe-48ac-828b-9483026c8dfa';
+          t.parentNode.insertBefore(s, t);
+        })(), 7000)
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"></script>

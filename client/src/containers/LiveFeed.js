@@ -34,8 +34,7 @@ class LiveFeed extends Component {
       )
     } else {
       const { livePrices } = this.props
-      console.log("THEM_LIVE_PRCES", livePrices);
-
+      
       return (
         <div className="landing">
           <div className="dark-overlay landing-inner text-light">
