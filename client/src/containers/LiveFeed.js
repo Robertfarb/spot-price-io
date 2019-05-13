@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MatUiTable from "../components/universal/MatUiTable";
+import DataTable from "../components/universal/DataTable";
 import { getLivePrices } from "../actions/price_actions";
 import LoadingSpinner from './../components/universal/LoadingSpinner';
 import "./../../src/App.css";
@@ -40,7 +40,7 @@ class LiveFeed extends Component {
           <div className="dark-overlay landing-inner text-light">
             <div className="row">
               <div className="col-md-12 text-center table-parent">
-                <MatUiTable livePrices={this.state.livePrices} {...this.props} />
+                <DataTable livePrices={this.state.livePrices} {...this.props} />
               </div>
             </div>
           </div>
