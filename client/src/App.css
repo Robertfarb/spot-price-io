@@ -3,7 +3,7 @@ img {
 }
 
 body {
-  background: #343a40;
+  background: white;
 }
 
 .landing {
@@ -22,7 +22,6 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
 }
 
 .card-form {
@@ -81,4 +80,8 @@ body {
 .sectionHeader {
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.register {
+  color: black;
 }
