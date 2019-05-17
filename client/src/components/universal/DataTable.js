@@ -1,19 +1,29 @@
 import React, { Component } from "react";
 import MUIDataTable from "mui-datatables";
+import SectionHeader from './SectionHeader';
+ 
 import {
-  createMuiTheme,
   MuiThemeProvider,
-  withStyles
 } from "@material-ui/core/styles";
 import {
   apiKeys,
+  bidMarkup,
   bullionColumns,
-  goldLibertyCoins,
-  groupBy,
+  bullionHalfPercent,
+  bullionOneHalfPercent,
+  bullionThreePercent,
+  getBullionTheme,
+  getSemiNumisTheme,
+  getNumisTheme,
   numismaticColumns,
+  numisFivePercent,
+  numisSixPercent,
+  numisEightPercent,
   options,
   semiNumismaticColumns,
-  sevenPercentForm,
+  semiNumisThreePercent,
+  semiNumisFivePercent,
+  semiNumisSevenPercent
 } from "../../util";
 import LoadingSpinner from "./LoadingSpinner";
 
@@ -31,31 +41,16 @@ class DataTable extends Component {
     this.cleanData();
   }
 
-  getMuiTheme = () =>
-    createMuiTheme({
-      overrides: {
-        MUIDataTable: {
-          root: {
-            backgroundColor: "#fdfd96"
-          }
-        },
-        MUIDataTableBodyCell: {
-          root: {
-            backgroundColor: "#fdfd96"
-          }
-        }
-      }
-    });
-
   render() {
+    console.log(this.props);
     const { assetClasses } = this.state;
     if (!assetClasses.bullion) {
       return <LoadingSpinner />;
     }
     return (
       <div>
-        <h1>Bullion Products</h1>
-        <MuiThemeProvider theme={this.getMuiTheme()}>
+        <SectionHeader title="Bullion Products" />
+        <MuiThemeProvider theme={getBullionTheme()}>
           <MUIDataTable
             height="95vh"
             data={assetClasses.bullion.goldBullion}
@@ -64,7 +59,7 @@ class DataTable extends Component {
             title="Gold Bullion"
           />
         </MuiThemeProvider>
-        <MuiThemeProvider theme={this.getMuiTheme()}>
+        <MuiThemeProvider theme={getBullionTheme()}>
           <MUIDataTable
             height="95vh"
             data={assetClasses.bullion.silverBullion}
@@ -73,64 +68,80 @@ class DataTable extends Component {
             title="Silver Bullion"
           />
         </MuiThemeProvider>
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.platPalBullion}
-          columns={bullionColumns}
-          options={options}
-          title="Platinum & Palladium Bullion"
-        />
-        <h1>Semi Numismatic</h1>
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.goldLiberty}
-          columns={semiNumismaticColumns}
-          options={options}
-          title="Gold Liberty Series"
-        />
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.goldIndianStG}
-          columns={semiNumismaticColumns}
-          options={options}
-          title="Gold Indian/St. Gauden Series"
-        />
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.silverAndHalfDollars}
-          columns={semiNumismaticColumns}
-          options={options}
-          title="Silver Dollars & Half Dollars"
-        />
+        <MuiThemeProvider theme={getBullionTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.platPalBullion}
+            columns={bullionColumns}
+            options={options}
+            title="Platinum & Palladium Bullion"
+          />
+        </MuiThemeProvider>
+        <SectionHeader title="Semi Numismatic" />
+        <MuiThemeProvider theme={getSemiNumisTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.goldLiberty}
+            columns={semiNumismaticColumns}
+            options={options}
+            title="Gold Liberty Series"
+          />
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={getSemiNumisTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.goldIndianStG}
+            columns={semiNumismaticColumns}
+            options={options}
+            title="Gold Indian/St. Gauden Series"
+          />
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={getSemiNumisTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.silverAndHalfDollars}
+            columns={semiNumismaticColumns}
+            options={options}
+            title="Silver Dollars & Half Dollars"
+          />
+        </MuiThemeProvider>
         <h1>Numismatic</h1>
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.goldProofCertEx}
-          columns={numismaticColumns}
-          options={options}
-          title="Gold Proof / Certified / Exclusive"
-        />
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.numismaticGoldLiberty}
-          columns={numismaticColumns}
-          options={options}
-          title="Gold Liberty Series"
-        />
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.numismaticGoldIndianStG}
-          columns={numismaticColumns}
-          options={options}
-          title="Gold Indian / St. Gauden Series"
-        />
-        <MUIDataTable
-          height="95vh"
-          data={assetClasses.bullion.silverProofCert}
-          columns={numismaticColumns}
-          options={options}
-          title="Silver Proof / Certified"
-        />
+        <MuiThemeProvider theme={getNumisTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.goldProofCertEx}
+            columns={numismaticColumns}
+            options={options}
+            title="Gold Proof / Certified / Exclusive"
+          />
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={getNumisTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.numismaticGoldLiberty}
+            columns={numismaticColumns}
+            options={options}
+            title="Gold Liberty Series"
+          />
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={getNumisTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.numismaticGoldIndianStG}
+            columns={numismaticColumns}
+            options={options}
+            title="Gold Indian / St. Gauden Series"
+          />
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={getNumisTheme()}>
+          <MUIDataTable
+            height="95vh"
+            data={assetClasses.bullion.silverProofCert}
+            columns={numismaticColumns}
+            options={options}
+            title="Silver Proof / Certified"
+          />
+        </MuiThemeProvider>
       </div>
     );
   }
@@ -158,40 +169,64 @@ class DataTable extends Component {
         case "Gold Bullion":
           coinObj = {
             Name: spotPrice.Name,
-            Bid: `$${spotPrice.Bid}`,
-            halfPercent: "HALF PERCENT",
-            onePercent: "ONE_PERCENT",
-            threePercent: "THREE_PERCENT"
+            Bid: `$${bidMarkup(spotPrice.Bid, 'Bullion')}`,
+            halfPercent: `$${bullionHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            onePercent: `$${bullionOneHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            threePercent: `$${bullionThreePercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`
           };
           bullionObj.goldBullion.push(coinObj);
           break;
         case "Platinum Bullion":
           coinObj = {
             Name: spotPrice.Name,
-            Bid: `$${spotPrice.Bid}`,
-            halfPercent: "HALF PERCENT",
-            onePercent: "ONE_PERCENT",
-            threePercent: "THREE_PERCENT"
+            Bid: `$${bidMarkup(spotPrice.Bid, 'Bullion')}`,
+            halfPercent: `$${bullionHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            onePercent: `$${bullionOneHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            threePercent: `$${bullionThreePercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`
           };
           bullionObj.platPalBullion.push(coinObj);
           break;
         case "Silver Bullion":
           coinObj = {
             Name: spotPrice.Name,
-            Bid: `$${spotPrice.Bid}`,
-            halfPercent: "HALF PERCENT",
-            onePercent: "ONE_PERCENT",
-            threePercent: "THREE_PERCENT"
+            Bid: `$${bidMarkup(spotPrice.Bid, 'Bullion')}`,
+            halfPercent: `$${bullionHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            onePercent: `$${bullionOneHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            threePercent: `$${bullionThreePercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`
           };
           bullionObj.silverBullion.push(coinObj);
           break;
         case "Palladium Bullion":
           coinObj = {
             Name: spotPrice.Name,
-            Bid: `$${spotPrice.Bid}`,
-            halfPercent: "HALF PERCENT",
-            onePercent: "ONE_PERCENT",
-            threePercent: "THREE_PERCENT"
+            Bid: `$${bidMarkup(spotPrice.Bid, 'Bullion')}`,
+            halfPercent: `$${bullionHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            onePercent: `$${bullionOneHalfPercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`,
+            threePercent: `$${bullionThreePercent(
+              bidMarkup(spotPrice.Bid, "Bullion")
+            )}`
           };
           bullionObj.platPalBullion.push(coinObj);
           break;
@@ -202,10 +237,16 @@ class DataTable extends Component {
           ) {
             coinObj = {
               Name: spotPrice.Name,
-              Bid: `$${spotPrice.Bid}`,
-              threePercent: "THREE PERCENT",
-              fivePercent: "FIVE_PERCENT",
-              sevenPercent: `$${sevenPercentForm(spotPrice.Bid)}`
+              Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+              threePercent: `$${semiNumisThreePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              fivePercent: `$${semiNumisFivePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              sevenPercent: `$${semiNumisSevenPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`
             };
             bullionObj.goldLiberty.push(coinObj);
           } else if (
@@ -214,10 +255,16 @@ class DataTable extends Component {
           ) {
             coinObj = {
               Name: spotPrice.Name,
-              Bid: `$${spotPrice.Bid}`,
-              threePercent: "THREE PERCENT",
-              fivePercent: "FIVE_PERCENT",
-              sevenPercent: `$${sevenPercentForm(spotPrice.Bid)}`
+              Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+              threePercent: `$${semiNumisThreePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              fivePercent: `$${semiNumisFivePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              sevenPercent: `$${semiNumisSevenPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`
             };
             bullionObj.goldIndianStG.push(coinObj);
             break;
@@ -226,20 +273,32 @@ class DataTable extends Component {
         case "Silver Dollars":
           coinObj = {
             Name: spotPrice.Name,
-            Bid: `$${spotPrice.Bid}`,
-            threePercent: "THREE PERCENT",
-            fivePercent: "FIVE_PERCENT",
-            sevenPercent: `$${sevenPercentForm(spotPrice.Bid)}`
+            Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+            threePercent: `$${semiNumisThreePercent(
+              bidMarkup(spotPrice.Bid, "Numis")
+            )}`,
+            fivePercent: `$${semiNumisFivePercent(
+              bidMarkup(spotPrice.Bid, "Numis")
+            )}`,
+            sevenPercent: `$${semiNumisSevenPercent(
+              bidMarkup(spotPrice.Bid, "Numis")
+            )}`
           };
           bullionObj.silverAndHalfDollars.push(coinObj);
           break;
         case "Half Dollars":
           coinObj = {
             Name: spotPrice.Name,
-            Bid: `$${spotPrice.Bid}`,
-            threePercent: "THREE PERCENT",
-            fivePercent: "FIVE_PERCENT",
-            sevenPercent: `$${sevenPercentForm(spotPrice.Bid)}`
+            Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+            threePercent: `$${semiNumisThreePercent(
+              bidMarkup(spotPrice.Bid, "Numis")
+            )}`,
+            fivePercent: `$${semiNumisFivePercent(
+              bidMarkup(spotPrice.Bid, "Numis")
+            )}`,
+            sevenPercent: `$${semiNumisSevenPercent(
+              bidMarkup(spotPrice.Bid, "Numis")
+            )}`
           };
           bullionObj.silverAndHalfDollars.push(coinObj);
           break;
@@ -251,20 +310,32 @@ class DataTable extends Component {
           ) {
             coinObj = {
               Name: spotPrice.Name,
-              Bid: `$${spotPrice.Bid}`,
-              fivePercent: "FIVE_PERCENT",
-              sixPercent: "SIX_PERCENT",
-              eightPercent: "EIGHT_PERCENT"
+              Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+              fivePercent: `$${numisFivePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              sixPercent: `$${numisSixPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              eightPercent: `$${numisEightPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`
             };
             bullionObj.goldProofCertEx.push(coinObj);
             break;
           } else if (spotPrice.Name.includes("Liberty MS-")) {
             coinObj = {
               Name: spotPrice.Name,
-              Bid: `$${spotPrice.Bid}`,
-              fivePercent: "FIVE_PERCENT",
-              sixPercent: "SIX_PERCENT",
-              eightPercent: "EIGHT_PERCENT"
+              Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+              fivePercent: `$${numisFivePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              sixPercent: `$${numisSixPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              eightPercent: `$${numisEightPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`
             };
             bullionObj.numismaticGoldLiberty.push(coinObj);
             break;
@@ -275,10 +346,16 @@ class DataTable extends Component {
           ) {
             coinObj = {
               Name: spotPrice.Name,
-              Bid: `$${spotPrice.Bid}`,
-              fivePercent: "FIVE_PERCENT",
-              sixPercent: "SIX_PERCENT",
-              eightPercent: "EIGHT_PERCENT"
+              Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+              fivePercent: `$${numisFivePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              sixPercent: `$${numisSixPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              eightPercent: `$${numisEightPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`
             };
             bullionObj.numismaticGoldIndianStG.push(coinObj);
             break;
@@ -288,10 +365,16 @@ class DataTable extends Component {
           ) {
             coinObj = {
               Name: spotPrice.Name,
-              Bid: `$${spotPrice.Bid}`,
-              fivePercent: "FIVE_PERCENT",
-              sixPercent: "SIX_PERCENT",
-              eightPercent: "EIGHT_PERCENT"
+              Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+              fivePercent: `$${numisFivePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              sixPercent: `$${numisSixPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              eightPercent: `$${numisEightPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`
             };
             bullionObj.silverProofCert.push(coinObj);
             break;
@@ -306,10 +389,16 @@ class DataTable extends Component {
           ) {
             coinObj = {
               Name: spotPrice.Name,
-              Bid: `$${spotPrice.Bid}`,
-              fivePercent: "FIVE_PERCENT",
-              sixPercent: "SIX_PERCENT",
-              eightPercent: "EIGHT_PERCENT"
+              Bid: `$${bidMarkup(spotPrice.Bid, "Numis")}`,
+              fivePercent: `$${numisFivePercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              sixPercent: `$${numisSixPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`,
+              eightPercent: `$${numisEightPercent(
+                bidMarkup(spotPrice.Bid, "Numis")
+              )}`
             };
             bullionObj.goldProofCertEx.push(coinObj);
             break;

@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/auth_actions';
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   onLogoutClick(e) {
     e.preventDefault();
     this.props.logoutUser();

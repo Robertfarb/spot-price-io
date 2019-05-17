@@ -5,11 +5,6 @@ import { getLivePrices } from "../actions/price_actions";
 import LoadingSpinner from './../components/universal/LoadingSpinner';
 import "./../../src/App.css";
 
-const styles = theme => ({
-  progress: {
-    margin: theme.spacing.unit * 2
-  }
-});
 
 class LiveFeed extends Component {
   constructor(props) {
@@ -19,22 +14,27 @@ class LiveFeed extends Component {
     }
   }
 
-  componentWillMount() {
-    this.props.getLivePrices()
-    .then(result => this.setState({loading: false}));
+  componentDidMount() {
+    const { getLivePrices } = this.props;
+    this.interval = setInterval(() => {
+      getLivePrices()
+      .then(result => this.setState({loading: false}))
+    }, 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
     const { loading } = this.state;
     const { livePrices } = this.props;
 
-    if (loading || !livePrices) {
+    if (!livePrices || loading) {
       return (
         <LoadingSpinner />
       )
     } else {
-      const { livePrices } = this.props
-      
       return (
         <div className="landing">
           <div className="dark-overlay landing-inner text-light">
