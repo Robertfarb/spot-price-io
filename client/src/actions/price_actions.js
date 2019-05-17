@@ -8,9 +8,9 @@ export const getLivePrices = (userData, history) => dispatch => {
     axios
       .get("/api/live-prices/all")
       .then(res => {
-        console.log("RESPONSE", res);
         dispatch(setLivePrices(res.data));
         resolve(res.data);
+        return true;
       })
       .catch(err => {
         dispatch({

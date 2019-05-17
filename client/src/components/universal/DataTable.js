@@ -105,7 +105,7 @@ class DataTable extends Component {
             title="Silver Dollars & Half Dollars"
           />
         </MuiThemeProvider>
-        <h1>Numismatic</h1>
+        <SectionHeader title="Numismatic" />
         <MuiThemeProvider theme={getNumisTheme()}>
           <MUIDataTable
             height="95vh"

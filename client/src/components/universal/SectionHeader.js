@@ -6,12 +6,14 @@ import React from 'react'
 
 export default function SectionHeader(props) {
   return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        <Typography variant="h4" color="inherit">
-          {props.title}
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <div className="sectionHeader">
+      <AppBar position="static" color="default">
+        <Toolbar>
+          <Typography variant="h3" color="inherit">
+            {props.title}
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 }

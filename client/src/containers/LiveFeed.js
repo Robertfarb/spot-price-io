@@ -16,10 +16,14 @@ class LiveFeed extends Component {
 
   componentDidMount() {
     const { getLivePrices } = this.props;
+    getLivePrices().then(result => {
+      this.setState({ loading: false });
+    });
+
     this.interval = setInterval(() => {
       getLivePrices()
       .then(result => this.setState({loading: false}))
-    }, 10000);
+    }, 7000);
   }
 
   componentWillUnmount() {
