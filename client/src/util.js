@@ -15,39 +15,44 @@ export const bullionColumns = [
     label: "Product Description",
     options: {
       filter: true,
-      sort: true
+      sort: true,
+      print: false,
     }
   },
   {
     name: "Bid",
     label: "Retail Bid",
     options: {
-      filter: true,
-      sort: true
+      filter: false,
+      sort: true,
+      print: false,
     }
   },
   {
     name: "halfPercent",
     label: "0.5%",
     options: {
-      filter: true,
-      sort: true
+      filter: false,
+      sort: true,
+      print: false,
     }
   },
   {
     name: "onePercent",
     label: "1.5%",
     options: {
-      filter: true,
-      sort: true
+      filter: false,
+      sort: true,
+      print: false,
     }
   },
   {
     name: "threePercent",
     label: "3%",
     options: {
-      filter: true,
-      sort: true
+      filter: false,
+      sort: true,
+      print: false,
     }
   }
 ];
@@ -141,7 +146,12 @@ export const numismaticColumns = [
 export const options = {
   filterType: "dropdown",
   selectableRows: false,
-  pagination: false
+  pagination: false,
+  filter: true,
+  print: false,
+  rowsSelected: false,
+  viewColumns: false,
+  filterType: 'multiselect'
 };
 
 export const apiKeys = ["Name", "Bid"];
@@ -207,7 +217,15 @@ export const getBullionTheme = () =>
       },
       MUIDataTableBodyCell: {
         root: {
-          backgroundColor: "#fdfd96"
+          backgroundColor: "#fdfd96",
+          width: "200px"
+        }
+      },
+      MUIDataTableToolbar: {
+        titleRoot: {
+          display: "flex",
+          justifyContent: "flex-end",
+          textAlign: "center"
         }
       }
     }
@@ -221,12 +239,24 @@ export const getSemiNumisTheme = () =>
     overrides: {
       MUIDataTable: {
         root: {
-          backgroundColor: "#cccccc"
+          backgroundColor: "#cccccc",
         }
       },
       MUIDataTableBodyCell: {
         root: {
-          backgroundColor: "#cccccc"
+          backgroundColor: "#cccccc",
+          width: "200px"
+        }
+      },
+      MUIDataTableToolbar: {
+        titleRoot: {
+          display: "flex",
+          justifyContent: "flex-end",
+          textAlign: "center",
+          width: "75%"
+        },
+        actionsRoot: {
+          width: "10%"
         }
       }
     }
@@ -245,7 +275,15 @@ export const getNumisTheme = () =>
       },
       MUIDataTableBodyCell: {
         root: {
-          backgroundColor: "#b6e589"
+          backgroundColor: "#b6e589",
+          width: "200px"
+        }
+      },
+      MUIDataTableToolbar: {
+        titleRoot: {
+          display: "flex",
+          justifyContent: "flex-end",
+          textAlign: "center"
         }
       }
     }

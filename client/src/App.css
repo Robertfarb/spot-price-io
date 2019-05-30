@@ -85,3 +85,8 @@ body {
 .register, .login {
   color: black;
 }
+
+iframe#easyXDM_nfusion_lib_default9946_provider {
+  margin: 0 auto !important;
+  width: 790px !important;
+}
