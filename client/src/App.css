@@ -8,7 +8,7 @@ body {
 
 .landing {
   position: relative;
-  background: #E0E0E0;
+  background: #e0e0e0;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -82,11 +82,22 @@ body {
   border-radius: 5px;
 }
 
-.register, .login {
+.register,
+.login {
   color: black;
 }
 
 iframe#easyXDM_nfusion_lib_default9946_provider {
   margin: 0 auto !important;
   width: 790px !important;
+}
+
+.live-ticker {
+  background: white;
+  min-height: 55px;
+  padding: 1;
+  position: sticky;
+  min-height: 55px;
+  top: 0px;
+  z-index: 500;
 }

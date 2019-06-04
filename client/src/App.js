@@ -6,7 +6,9 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './util/set_auth_token';
 import { setCurrentUser, logoutUser } from './actions/auth_actions';
 import { ProtectedRoute, AuthRoute, AdminRoute } from './util/route_util';
+import { setHeight } from './util';
 
+import LoadingSpinner from "./components/universal/LoadingSpinner";
 import NavBar from "./components/universal/Navbar";
 import Footer from "./components/universal/Footer";
 import Login from "./components/auth/login";
@@ -29,11 +31,17 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    let height = setHeight();
+    console.log(height);
+  }
 
   render() {
+    console.log(this.props);
     return (
       <Provider store={store}>
         <Router>

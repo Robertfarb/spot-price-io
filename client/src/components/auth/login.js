@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { loginUser } from '../../actions/auth_actions';
 
+import { setHeight } from '../../util';
+
 class Login extends Component {
   constructor() {
     super();
@@ -26,10 +28,19 @@ class Login extends Component {
     }
   }
 
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  componentDidUpdate() {
+    setHeight();
+  }
+
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/live-feed');
     }
+    setHeight();
   }
 
   update(field) {

@@ -20,8 +20,8 @@ export const bullionColumns = [
     }
   },
   {
-    name: "Bid",
-    label: "Retail Bid",
+    name: "Ask",
+    label: "Retail Ask",
     options: {
       filter: false,
       sort: true,
@@ -67,8 +67,8 @@ export const semiNumismaticColumns = [
     }
   },
   {
-    name: "Bid",
-    label: "Retail Bid",
+    name: "Ask",
+    label: "Retail Ask",
     options: {
       filter: true,
       sort: true
@@ -110,8 +110,8 @@ export const numismaticColumns = [
     }
   },
   {
-    name: "Bid",
-    label: "Retail Bid",
+    name: "Ask",
+    label: "Retail Ask",
     options: {
       filter: true,
       sort: true
@@ -153,8 +153,6 @@ export const options = {
   viewColumns: false,
   filterType: 'multiselect'
 };
-
-export const apiKeys = ["Name", "Bid"];
 
 export const sevenPercentForm = (spotPrice) => (
   (spotPrice * 1.07).toFixed(2)
@@ -227,7 +225,12 @@ export const getBullionTheme = () =>
           justifyContent: "flex-end",
           textAlign: "center"
         }
-      }
+      },
+      MUIDataTableHeadCell: {
+        fixedHeader: {
+          top: '45px',
+        }
+      },
     }
 });
 
@@ -253,12 +256,13 @@ export const getSemiNumisTheme = () =>
           display: "flex",
           justifyContent: "flex-end",
           textAlign: "center",
-          width: "75%"
         },
-        actionsRoot: {
-          width: "10%"
+      },
+      MUIDataTableHeadCell: {
+        fixedHeader: {
+          top: '45px',
         }
-      }
+      },
     }
 });
 
@@ -285,6 +289,22 @@ export const getNumisTheme = () =>
           justifyContent: "flex-end",
           textAlign: "center"
         }
-      }
+      },
+      MUIDataTableHeadCell: {
+        fixedHeader: {
+          top: '45px',
+        }
+      },
     }
 });
+
+export const setHeight = () => {
+  let body = document.body;
+  let html = document.documentElement;
+
+  let height = Math.max(body.scrollHeight, body.offsetHeight,
+    html.clientHeight, html.scrollHeight, html.offsetHeight);
+    
+  body.style.height = height + "px";
+  return height;
+}
