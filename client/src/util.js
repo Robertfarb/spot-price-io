@@ -242,12 +242,12 @@ export const getSemiNumisTheme = () =>
     overrides: {
       MUIDataTable: {
         root: {
-          backgroundColor: "#cccccc",
+          backgroundColor: "#add8e6",
         }
       },
       MUIDataTableBodyCell: {
         root: {
-          backgroundColor: "#cccccc",
+          backgroundColor: "#add8e6",
           width: "200px"
         }
       },
