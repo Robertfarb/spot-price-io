@@ -308,3 +308,45 @@ export const setHeight = () => {
   body.style.height = height + "px";
   return height;
 }
+
+export const createBullionCoin = (spotPrice) => ({
+  Name: spotPrice.Name,
+  Ask: `$${bidMarkup(spotPrice.Ask, 'Bullion')}`,
+  halfPercent: `$${bullionHalfPercent(
+    bidMarkup(spotPrice.Ask, "Bullion")
+  )}`,
+  onePercent: `$${bullionOneHalfPercent(
+    bidMarkup(spotPrice.Ask, "Bullion")
+  )}`,
+  threePercent: `$${bullionThreePercent(
+    bidMarkup(spotPrice.Ask, "Bullion")
+  )}`,
+});
+
+export const createSemiNumisCoin = (spotPrice) => ({
+  Name: spotPrice.Name,
+  Ask: `$${bidMarkup(spotPrice.Ask, "Numis")}`,
+  threePercent: `$${semiNumisThreePercent(
+    bidMarkup(spotPrice.Ask, "Numis")
+  )}`,
+  fivePercent: `$${semiNumisFivePercent(
+    bidMarkup(spotPrice.Ask, "Numis")
+  )}`,
+  sevenPercent: `$${semiNumisSevenPercent(
+    bidMarkup(spotPrice.Ask, "Numis")
+  )}`
+});
+
+export const createNumisCoin = (spotPrice) => ({
+  Name: spotPrice.Name,
+  Ask: `$${bidMarkup(spotPrice.Ask, "Numis")}`,
+  fivePercent: `$${numisFivePercent(
+    bidMarkup(spotPrice.Ask, "Numis")
+  )}`,
+  sixPercent: `$${numisSixPercent(
+    bidMarkup(spotPrice.Ask, "Numis")
+  )}`,
+  eightPercent: `$${numisEightPercent(
+    bidMarkup(spotPrice.Ask, "Numis")
+  )}`
+});

@@ -25,4 +25,10 @@ router.get('/all', (req, res) => {
     });
 });
 
+router.get('bayside-prices', (req, res) => {
+  const options = {
+    uri: ''
+  }
+});
+
 module.exports = router;
