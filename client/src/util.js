@@ -20,6 +20,15 @@ export const bullionColumns = [
     }
   },
   {
+    name: "SKU",
+    label: "SKU",
+    options: {
+      filter: false,
+      sort: false,
+      print: false,
+    }
+  },
+  {
     name: "Ask",
     label: "Retail Ask",
     options: {
@@ -67,6 +76,15 @@ export const semiNumismaticColumns = [
     }
   },
   {
+    name: "SKU",
+    label: "SKU",
+    options: {
+      filter: false,
+      sort: false,
+      print: false,
+    }
+  },
+  {
     name: "Ask",
     label: "Retail Ask",
     options: {
@@ -107,6 +125,15 @@ export const numismaticColumns = [
     options: {
       filter: true,
       sort: true
+    }
+  },
+  {
+    name: "SKU",
+    label: "SKU",
+    options: {
+      filter: false,
+      sort: false,
+      print: false,
     }
   },
   {
@@ -311,6 +338,7 @@ export const setHeight = () => {
 
 export const createBullionCoin = (spotPrice) => ({
   Name: spotPrice.Name,
+  SKU: spotPrice.SKU,
   Ask: `$${bidMarkup(spotPrice.Ask, 'Bullion')}`,
   halfPercent: `$${bullionHalfPercent(
     bidMarkup(spotPrice.Ask, "Bullion")
@@ -325,6 +353,7 @@ export const createBullionCoin = (spotPrice) => ({
 
 export const createSemiNumisCoin = (spotPrice) => ({
   Name: spotPrice.Name,
+  SKU: spotPrice.SKU,
   Ask: `$${bidMarkup(spotPrice.Ask, "Numis")}`,
   threePercent: `$${semiNumisThreePercent(
     bidMarkup(spotPrice.Ask, "Numis")
@@ -339,6 +368,7 @@ export const createSemiNumisCoin = (spotPrice) => ({
 
 export const createNumisCoin = (spotPrice) => ({
   Name: spotPrice.Name,
+  SKU: spotPrice.SKU,
   Ask: `$${bidMarkup(spotPrice.Ask, "Numis")}`,
   fivePercent: `$${numisFivePercent(
     bidMarkup(spotPrice.Ask, "Numis")

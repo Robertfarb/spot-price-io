@@ -37,11 +37,9 @@ class App extends Component {
 
   componentDidMount() {
     let height = setHeight();
-    console.log(height);
   }
 
   render() {
-    console.log(this.props);
     return (
       <Provider store={store}>
         <Router>
