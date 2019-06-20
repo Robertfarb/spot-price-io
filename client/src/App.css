@@ -101,3 +101,7 @@ iframe#easyXDM_nfusion_lib_default9946_provider {
   top: 0px;
   z-index: 500;
 }
+
+td:nth-child(3) {
+  background-color: black !important;
+}

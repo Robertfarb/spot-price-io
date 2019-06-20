@@ -250,14 +250,25 @@ export const getBullionTheme = () =>
         titleRoot: {
           display: "flex",
           justifyContent: "flex-end",
-          textAlign: "center"
+          textAlign: "center",
+        },
+        root: {
+          position: "sticky",
+          top: "55px",
+          "z-index": "100",
+          background: "white"
         }
       },
       MUIDataTableHeadCell: {
         fixedHeader: {
-          top: '45px',
+          top: '100px',
         }
       },
+      MUIDataTableRow: {
+        root: {
+         background: 'red !important',
+        }
+      }
     }
 });
 
@@ -284,10 +295,16 @@ export const getSemiNumisTheme = () =>
           justifyContent: "flex-end",
           textAlign: "center",
         },
+        root: {
+          position: "sticky",
+          top: "55px",
+          "z-index": "100",
+          background: "white"
+        }
       },
       MUIDataTableHeadCell: {
         fixedHeader: {
-          top: '45px',
+          top: "100px",
         }
       },
     }
@@ -315,12 +332,18 @@ export const getNumisTheme = () =>
           display: "flex",
           justifyContent: "flex-end",
           textAlign: "center"
+        },
+        root: {
+          position: "sticky",
+          top: "55px",
+          "z-index": "100",
+          background: "white"
         }
       },
       MUIDataTableHeadCell: {
         fixedHeader: {
-          top: '45px',
-        }
+          top: '100px',
+        },
       },
     }
 });
