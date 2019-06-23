@@ -217,7 +217,7 @@ class DataTable extends Component {
         createNumisCoin(spotPrices.find(obj => obj.SKU === "GAEP4P")),
         createNumisCoin(spotPrices.find(obj => obj.SKU === "GAEP2P")),
         createNumisCoin(spotPrices.find(obj => obj.SKU === "PLAEP100")),
-        // createNumisCoin(spotPrices.find(obj => obj.SKU === "SAEP")),
+        createNumisCoin(spotPrices.find(obj => obj.SKU === "SAEP")),
         createNumisCoin(spotPrices.find(obj => obj.SKU === "SCAF")),
         createNumisCoin(spotPrices.find(obj => obj.SKU === "SCPBC")),
         createNumisCoin(spotPrices.find(obj => obj.SKU === "SCSF")),
