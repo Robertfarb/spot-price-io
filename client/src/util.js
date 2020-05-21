@@ -93,15 +93,7 @@ export const semiNumismaticColumns = [
     }
   },
   {
-    name: "threePercent",
-    label: "3%",
-    options: {
-      filter: true,
-      sort: true
-    }
-  },
-  {
-    name: "fivePercent",
+    name: "fiveHalfPercent",
     label: "5.5%",
     options: {
       filter: true,
@@ -109,8 +101,16 @@ export const semiNumismaticColumns = [
     }
   },
   {
-    name: "sevenPercent",
-    label: "7%",
+    name: "sixQuarterPercent",
+    label: "6.25%",
+    options: {
+      filter: true,
+      sort: true
+    }
+  },
+  {
+    name: "eightPercent",
+    label: "8%",
     options: {
       filter: true,
       sort: true
@@ -145,16 +145,8 @@ export const numismaticColumns = [
     }
   },
   {
-    name: "fivePercent",
-    label: "5%",
-    options: {
-      filter: true,
-      sort: true
-    }
-  },
-  {
     name: "sixPercent",
-    label: "6.5%",
+    label: "6%",
     options: {
       filter: true,
       sort: true
@@ -163,6 +155,14 @@ export const numismaticColumns = [
   {
     name: "eightPercent",
     label: "8%",
+    options: {
+      filter: true,
+      sort: true
+    }
+  },
+  {
+    name: "tenPercent",
+    label: "10%",
     options: {
       filter: true,
       sort: true
@@ -205,16 +205,16 @@ export const bidMarkup = (spotPrice, bidType = 'Bullion') => {
   }
 };
 
-export const semiNumisThreePercent = spotPrice => (
-  (spotPrice * 1.24).toFixed(2)
+export const semiNumisFiveHalfPercent = spotPrice => (
+  (spotPrice * 1.245).toFixed(2)
 );
 
-export const semiNumisFivePercent = spotPrice => (
-  (spotPrice * 1.265).toFixed(2)
+export const semiNumisSixQuarterPercent = spotPrice => (
+  (spotPrice * 1.2725).toFixed(2)
 );
 
-export const semiNumisSevenPercent = spotPrice => (
-  (spotPrice * 1.28).toFixed(2)
+export const semiNumisEightPercent = spotPrice => (
+  (spotPrice * 1.29).toFixed(2)
 );
 
 export const numisFivePercent = spotPrice => (
@@ -222,10 +222,14 @@ export const numisFivePercent = spotPrice => (
 );
 
 export const numisSixPercent = spotPrice => (
-  (spotPrice * 1.275).toFixed(2)
+  (spotPrice * 1.23).toFixed(2)
 );
 
 export const numisEightPercent = spotPrice => (
+  (spotPrice * 1.25).toFixed(2)
+);
+
+export const numisTenPercent = spotPrice => (
   (spotPrice * 1.29).toFixed(2)
 );
 
@@ -378,13 +382,13 @@ export const createSemiNumisCoin = (spotPrice) => ({
   Name: spotPrice.Name,
   SKU: spotPrice.SKU,
   Ask: `$${bidMarkup(spotPrice.Ask, "Numis")}`,
-  threePercent: `$${semiNumisThreePercent(
+  fiveHalfPercent: `$${semiNumisFiveHalfPercent(
     bidMarkup(spotPrice.Ask, "Numis")
   )}`,
-  fivePercent: `$${semiNumisFivePercent(
+  sixQuarterPercent: `$${semiNumisSixQuarterPercent(
     bidMarkup(spotPrice.Ask, "Numis")
   )}`,
-  sevenPercent: `$${semiNumisSevenPercent(
+  eightPercent: `$${semiNumisEightPercent(
     bidMarkup(spotPrice.Ask, "Numis")
   )}`
 });
@@ -393,13 +397,13 @@ export const createNumisCoin = (spotPrice) => ({
   Name: spotPrice.Name,
   SKU: spotPrice.SKU,
   Ask: `$${bidMarkup(spotPrice.Ask, "Numis")}`,
-  fivePercent: `$${numisFivePercent(
-    bidMarkup(spotPrice.Ask, "Numis")
-  )}`,
   sixPercent: `$${numisSixPercent(
     bidMarkup(spotPrice.Ask, "Numis")
   )}`,
   eightPercent: `$${numisEightPercent(
+    bidMarkup(spotPrice.Ask, "Numis")
+  )}`,
+  tenPercent: `$${numisTenPercent(
     bidMarkup(spotPrice.Ask, "Numis")
   )}`
 });
