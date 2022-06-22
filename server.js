@@ -16,8 +16,13 @@ app.use(bodyParser.json());
 
 const db = require('./config/keys_dev').mongoURI;
 
-mongoose.connect(db, { useNewUrlParser: true })
-  .then(console.log("mongoDB connected"))
+mongoose.connect(db,  {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  authSource:"admin",
+  ssl: true,
+})
+  .then(console.log("mongoDB connected", db.collection))
   .catch(err => console.log(err));
 
 app.use(passport.initialize());
