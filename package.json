@@ -21,7 +21,7 @@
     "url": "https://github.com/Robertfarb/spot-price-io/issues"
   },
   "engines": {
-    "node": "15.0"
+    "node": "15.14"
   },
   "homepage": "https://github.com/Robertfarb/spot-price-io#readme",
   "dependencies": {
